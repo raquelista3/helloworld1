@@ -222,7 +222,6 @@ class InstaBot:
         for user in self.user_blacklist:
             user_id_url = self.url_user_detail % (user)
             info = self.s.get(user_id_url)
-
             # prevent error if 'Account of user was deleted or link is invalid
             from json import JSONDecodeError
             try:
@@ -276,7 +275,6 @@ class InstaBot:
         self.s.headers.update({'X-CSRFToken': login.cookies['csrftoken']})
         self.csrftoken = login.cookies['csrftoken']
         time.sleep(5 * random.random())
-
         if login.status_code == 200:
             r = self.s.get('https://www.instagram.com/')
             finder = r.text.find(self.user_login)
@@ -324,7 +322,6 @@ class InstaBot:
                 self.write_log(log_string)
                 time.sleep(sleeptime)
                 self.bot_follow_list.remove(f)
-
         # Logout
         if (self.login_status):
             self.logout()
@@ -351,7 +348,6 @@ class InstaBot:
 
     def like_all_exist_media(self, media_size=-1, delay=True):
         """ Like all media ID that have self.media_by_tag """
-
         if self.login_status:
             if self.media_by_tag != 0:
                 i = 0
