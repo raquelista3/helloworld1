@@ -17,7 +17,7 @@ bot = InstaBot(
     password="password",
     like_per_day=1000,
     comments_per_day=0,
-    tag_list=['follow4follow', 'f4f', 'cute'],
+    tag_list=['follow4follow', 'f4f'],
     tag_blacklist=['rain', 'thunderstorm'],
     user_blacklist={},
     max_like_for_one_tag=50,
@@ -32,7 +32,7 @@ bot = InstaBot(
     # For example: "This shot feels wow!"
     comment_list=[["this", "the", "your"],
                   ["photo", "picture", "pic", "shot", "snapshot"],
-                  ["is", "looks", "feels", "is really"],
+                  ["is", "looks", "is really"],
                   ["great", "super", "good", "very good", "good", "wow",
                    "WOW", "cool", "GREAT","magnificent", "magical",
                    "very cool", "stylish", "beautiful", "so beautiful",
@@ -47,7 +47,7 @@ bot = InstaBot(
         'second', 'stuff', 'art', 'project', 'love', 'life', 'food', 'blog',
         'free', 'keren', 'photo', 'graphy', 'indo', 'travel', 'art', 'shop',
         'store', 'sex', 'toko', 'jual', 'online', 'murah', 'jam', 'kaos',
-        'case', 'baju', 'fashion', 'corp', 'tas', 'butik', 'grosir', 'karpet',
+        'case', 'baju', 'fashion', 'tas', 'butik', 'grosir', 'karpet',
         'sosis', 'salon', 'skin', 'care', 'cloth', 'tech', 'rental', 'kamera',
         'beauty', 'express', 'kredit', 'collection', 'impor', 'preloved',
         'follow', 'follower', 'gain', '.id', '_id', 'bags'
